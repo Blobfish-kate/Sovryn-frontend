@@ -63,7 +63,7 @@ class TestLend extends React.Component {
      */
     async lendRBTC() {
         console.log("lend rbtc: "+this.state.depositAmount);
-        await this.approveToken("contractTokenRBTC", loanTokenSUSD, web3utils.toWei(this.state.depositAmount.toString(), 'ether'));
+        await this.approveToken("contractTokenRBTC", loanTokenRBTC, web3utils.toWei(this.state.depositAmount.toString(), 'ether'));
 
 
         this.contractIRBTC.methods.mint(this.state.account, web3utils.toWei(this.state.depositAmount.toString(), 'ether')).send({ from: this.state.account })
@@ -85,7 +85,7 @@ class TestLend extends React.Component {
      */
     async lendSUSD() {
         console.log("lend susd: "+this.state.depositAmount);
-       await this.approveToken("contractTokenSUSD", loanTokenRBTC, web3utils.toWei(this.state.depositAmount.toString(), 'ether'));
+       await this.approveToken("contractTokenSUSD", loanTokenSUSD, web3utils.toWei(this.state.depositAmount.toString(), 'ether'));
 
         this.contractISUSD.methods.mint(this.state.account, web3utils.toWei(this.state.depositAmount.toString(), 'ether')).send({ from: this.state.account })
             .then((tx) => {
